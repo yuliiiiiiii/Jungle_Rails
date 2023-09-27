@@ -4,6 +4,51 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
+  <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Items</th>
+          <th> </th>
+          <th>Quantity</th>
+        </tr>
+      <thead>
+      <tbody>
+        
+        <% @order.line_items.each do |item| %>
+          <%= render 'line_item', product:item.product, quantity:item.quantity.to_i %>
+        <% end %>
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="2">
+          Total Items:
+          </th>
+          <th>
+          <%= @order.line_items.length %>
+          </th>
+        <tr>
+        <tr>
+          <th colspan="2">
+          Total Amount:
+          </th>
+          <th>
+          <%= humanized_money_with_symbol @order.total_cents.to_f / 100 %>
+          </th>
+        <tr>
+        <tr>
+          <th colspan="2">
+          Email:
+          </th>
+          <th>
+          <%= @order.email %>
+          </th>
+        <tr>
+      </tfoot>
+    </table>
+  </div>
+
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
