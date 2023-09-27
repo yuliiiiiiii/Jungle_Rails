@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get '/about', to: 'about#index'
+  #need to change the rout manually if i used "bin/rails generate controller About index" to create the about controller, even though the route is auto generated.
+  #when someone goes to the /about page, render the index action in the About controller instead of having the index attached to it.
+
   root to: 'products#index'
   # get '/' => 'products#index'
 
