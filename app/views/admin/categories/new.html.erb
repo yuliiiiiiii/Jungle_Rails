@@ -30,7 +30,7 @@
 
         <div class="form-group">
           <%= form.label :produces %>
-          <%= form.select :product_ids, options_from_collection_for_select(Product.all.order(:name), :id, :name), { include_blank: true }, class: 'form-control' %>
+          <%= form.select :products, options_from_collection_for_select(Product.all.order(:name), :id, :name), { include_blank: true }, class: 'form-control' %>
         </div>
 
         <%= form.submit 'Create Category', class: 'btn btn-primary' %>
