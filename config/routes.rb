@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'categories/index'
+    get 'categories/new'
+    get 'categories/create'
+  end
   get '/about', to: 'about#index'
   #need to change the rout manually if i used "bin/rails generate controller About index" to create the about controller, even though the route is auto generated.
   #when someone goes to the /about page, render the index action in the About controller instead of having the index attached to it.
@@ -20,6 +25,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
+    resources :categories, except: [:edit, :update, :show, :destroy]
+    #put producs and categories under admin namespace to separate from the user's products and categories pages
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
