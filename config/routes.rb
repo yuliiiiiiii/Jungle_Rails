@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  #need to change the auto generated route for Users controller to this:
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
 
   namespace :admin do
     get 'categories/index'
